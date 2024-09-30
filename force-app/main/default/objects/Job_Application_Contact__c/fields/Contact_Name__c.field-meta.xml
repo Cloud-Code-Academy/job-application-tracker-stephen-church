@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contact_Name__c</fullName>
+    <description>Clickable link to the Contact Name to facilitate navigating from the Job Application directly to a related Contact.</description>
+    <externalId>false</externalId>
+    <formula>HYPERLINK(Contact__c, Contact__r.FirstName + &quot; &quot; +  Contact__r.LastName, &quot;_self&quot;)</formula>
+    <inlineHelpText>Contact Name associated with the Job Application.</inlineHelpText>
+    <label>Contact Name</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

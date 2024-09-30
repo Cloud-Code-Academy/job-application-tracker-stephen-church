@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Jooble Post</label>
+    <protected>false</protected>
+    <values>
+        <field>API_Key__c</field>
+        <value xsi:type="xsd:string">bb1b479d-67e2-4234-907d-2dc633054d8c</value>
+    </values>
+    <values>
+        <field>Body__c</field>
+        <value xsi:type="xsd:string">{ &quot;Keywords&quot;: &quot;***jobKeywords***&quot;, &quot;location&quot;: &quot;***jobLocation***&quot;, &quot;resultonpage&quot;: &quot;***recordCount***&quot;, &quot;page&quot;: &quot;***pageNumber***&quot; }</value>
+    </values>
+    <values>
+        <field>Endpoint__c</field>
+        <value xsi:type="xsd:string">https://jooble.org/api/</value>
+    </values>
+    <values>
+        <field>Header_Key__c</field>
+        <value xsi:type="xsd:string">Content-Type</value>
+    </values>
+    <values>
+        <field>Header_Value__c</field>
+        <value xsi:type="xsd:string">application/json</value>
+    </values>
+    <values>
+        <field>Max_Pages__c</field>
+        <value xsi:type="xsd:double">12.0</value>
+    </values>
+    <values>
+        <field>Method__c</field>
+        <value xsi:type="xsd:string">POST</value>
+    </values>
+    <values>
+        <field>Record_Count_To_Get__c</field>
+        <value xsi:type="xsd:string">100</value>
+    </values>
+</CustomMetadata>

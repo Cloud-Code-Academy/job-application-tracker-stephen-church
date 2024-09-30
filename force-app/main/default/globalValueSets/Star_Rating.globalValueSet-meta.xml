@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>⭐⭐⭐⭐⭐</fullName>
+        <default>false</default>
+        <label>⭐⭐⭐⭐⭐</label>
+    </customValue>
+    <customValue>
+        <fullName>⭐⭐⭐⭐</fullName>
+        <default>false</default>
+        <label>⭐⭐⭐⭐</label>
+    </customValue>
+    <customValue>
+        <fullName>⭐⭐⭐</fullName>
+        <default>false</default>
+        <label>⭐⭐⭐</label>
+    </customValue>
+    <customValue>
+        <fullName>⭐⭐</fullName>
+        <default>false</default>
+        <label>⭐⭐</label>
+    </customValue>
+    <customValue>
+        <fullName>⭐</fullName>
+        <default>false</default>
+        <label>⭐</label>
+    </customValue>
+    <customValue>
+        <fullName>❓</fullName>
+        <default>true</default>
+        <label>❓</label>
+    </customValue>
+    <description>Ratings on a scale of 1-5 using star emojis.</description>
+    <masterLabel>Star Rating</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

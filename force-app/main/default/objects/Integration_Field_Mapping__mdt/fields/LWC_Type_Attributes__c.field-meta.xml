@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LWC_Type_Attributes__c</fullName>
+    <description>Type attributes for the data type that is shown in an LWC data table. For example, if you are showing a button in a cell, you can specify the variant (e.g. brand, destructive) in this field.</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>LWC Type Attributes</label>
+    <length>32768</length>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

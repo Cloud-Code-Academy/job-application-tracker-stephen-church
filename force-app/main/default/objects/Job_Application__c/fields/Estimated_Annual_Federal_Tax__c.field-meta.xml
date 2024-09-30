@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Estimated_Annual_Federal_Tax__c</fullName>
+    <description>Estimated Federal tax that will be paid at the job. Calculated using the salary on the job, the Federal tax status of the User that saved the job and the tax rates that are stored in Custom Metadata.</description>
+    <inlineHelpText>Based on the salary of the Job and the Federal tax status of the person that saved it, this is the estimated Federal tax they will pay.</inlineHelpText>
+    <label>Estimated Annual Federal Tax</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

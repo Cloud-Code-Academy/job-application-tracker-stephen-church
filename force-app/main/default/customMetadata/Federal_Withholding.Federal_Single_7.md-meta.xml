@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Federal - Single - 7</label>
+    <protected>false</protected>
+    <values>
+        <field>Bracket_End__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Bracket_Start__c</field>
+        <value xsi:type="xsd:double">609351.0</value>
+    </values>
+    <values>
+        <field>Federal_Tax_Filing_Status__c</field>
+        <value xsi:type="xsd:string">Single</value>
+    </values>
+    <values>
+        <field>Order__c</field>
+        <value xsi:type="xsd:double">7.0</value>
+    </values>
+    <values>
+        <field>Tax_Rate__c</field>
+        <value xsi:type="xsd:double">37.0</value>
+    </values>
+    <values>
+        <field>Type__c</field>
+        <value xsi:type="xsd:string">Federal Income Tax</value>
+    </values>
+</CustomMetadata>
