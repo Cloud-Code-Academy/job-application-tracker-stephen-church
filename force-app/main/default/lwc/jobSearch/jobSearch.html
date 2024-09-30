@@ -1,0 +1,170 @@
+<template>
+    <lightning-card>
+        <div class="slds-box box-background-sf-color">
+            <div class="slds-text-heading_large slds-align_absolute-center text-white">
+                <b>Looking for a career change? Want to work remote? Whatever the reason, start your job search here!</b>
+            </div>
+        </div>
+        <div class="slds-grid slds-grid_vertical-align-start slds-grid_vertical-align-center">
+            <div class="slds-col slds-size_1-of-3 slds-m-around_small">
+                <span>
+                    <div class="slds-text-heading_small slds-align_absolute-center">
+                        <p><b>Step 1</b>: What job are you looking for? &#128187; &#128188;</p>
+                    </div>
+                    <br>
+                    <lightning-input 
+                        type="text"                 
+                        name="jobKeywords"
+                        label="Job Title"
+                        variant="label-hidden"
+                        placeholder="Be specific! Enter Salesforce Developer rather than Developer!"
+                        value={jobKeywords}
+                        onchange={handleSearchParameters}
+                    ></lightning-input>
+                </span>
+            </div>
+            <div class="slds-col slds-size_1-of-3 slds-m-around_small">
+                <span>
+                    <div class="slds-text-heading_small slds-align_absolute-center">
+                        <p><b>Step 2</b>: Where do you want to work? &#127961; &#127958;</p>
+                    </div>
+                    <br>
+                    <lightning-input 
+                        type="text"                 
+                        name="jobLocation"
+                        label="Job Location"
+                        variant="label-hidden"
+                        placeholder="Want to work remote? In a beach town? Enter your dream location here!"
+                        value={jobLocation}
+                        onchange={handleSearchParameters}
+                    ></lightning-input>
+                </span>
+            </div>
+            <div class="slds-col slds-size_1-of-3 slds-m-around_small">
+                <span>
+                    <div class="slds-text-heading_small slds-align_absolute-center">
+                        <p><b>Step 3</b>: Click search and we'll find your dream job! &#128588; &#128525;</p>
+                    </div>
+                    <br>
+                        <div class="slds-align_absolute-center">
+                        <lightning-button
+                            label="Search" 
+                            title="search" 
+                            variant="brand" 
+                            slot="actions"
+                            disabled={searchButtonDisabled}
+                            onclick={handleSearchClick}
+                        ></lightning-button>
+                    </div>
+                </span>
+            </div>
+            <div>
+                <lightning-spinner 
+                    lwc:if={isLoading}
+                    alternative-text="Finding your dream job"
+                    variant="brand"
+                    size="large"
+                ></lightning-spinner>
+            </div>
+        </div>
+    </lightning-card>
+    <template lwc:if={activeError}>
+        <div class="error-card text-white slds-text-align_center slds-text-heading_large">
+            <p><b>{errorMessage}</b></p>                             
+        </div>
+    </template>
+    <template lwc:if={shouldDisplayTable}>
+        <lightning-card>
+            <div class="slds-box box-background-sf-color">
+                <div class="slds-text-heading_large slds-align_absolute-center text-white">
+                    <b>Select jobs you want to research more and click Save Selected Jobs. We'll save them in SF for you to look at later!</b>
+                </div>
+            </div>
+            <div class="slds-m-bottom_xx-large">
+                <lightning-spinner 
+                    lwc:if={isLoading}
+                    alternative-text="Finding your dream job"
+                    variant="brand"
+                    size="large"
+                ></lightning-spinner>
+                <lightning-datatable
+                    data={currentlyDisplayedJobs}
+                    key-field="id"
+                    columns={jobTableColumns}
+                    selected-rows={currentlySelectedJobs}
+                    onrowselection={handleJobSelection}
+                    sorted-by={sortBy}
+                    sorted-direction={sortDirection}
+                    onsort={handleTableSort}
+                ></lightning-datatable>
+            </div>
+        </lightning-card>
+        <div>
+            <br>
+            <br>
+            <br>
+        </div>
+        <div class="slds-docked-form-footer slds-m-top_xx-large box-background-sf-color">
+            <template lwc:if={shouldDisplayTable}>
+                <div class="slds-grid slds-size_4-of-4 slds-p-around_medium button-container box-background-sf-color">
+                    <div class="slds-col slds-size_1-of-4 slds-text-align_left slds-p-around_xx-small text-sf-color">
+                        <p><b>{pageNumberMessage}</b></p>
+                    </div>
+                    <div class="slds-col slds-size_2-of-4">
+                        <lightning-layout horizontal-align="center">
+                            <div class="slds-p-around_xx-small">
+                                <lightning-layout-item>
+                                    <lightning-button
+                                        label="< First"
+                                        onclick={handleFirstPage} 
+                                        variant="brand"
+                                        disabled={firstButtonDisabled}
+                                    ></lightning-button>                             
+                                </lightning-layout-item>
+                            </div>
+                            <div class="slds-p-around_xx-small">
+                                <lightning-layout-item>
+                                    <lightning-button
+                                        label="Back"
+                                        onclick={handleBackPage} 
+                                        variant="brand"
+                                        disabled={backButtonDisabled}
+                                    ></lightning-button>                             
+                                </lightning-layout-item>
+                            </div>
+                            <div class="slds-p-around_xx-small">
+                                <lightning-layout-item>
+                                    <lightning-button
+                                        label="Next" 
+                                        onclick={handleNextPage} 
+                                        variant="brand"
+                                        disabled={nextButtonDisabled}
+                                    ></lightning-button>                             
+                                </lightning-layout-item>
+                            </div>
+                            <div class="slds-p-around_xx-small">
+                                <lightning-layout-item>
+                                    <lightning-button
+                                        label="Last >"
+                                        onclick={handleLastPage} 
+                                        variant="brand"
+                                        disabled={lastButtonDisabled}
+                                    ></lightning-button>                             
+                                </lightning-layout-item>
+                            </div>      
+                        </lightning-layout>
+                    </div>
+                    <div class="slds-col slds-size_1-of-4 slds-text-align_right slds-p-around_xx-small">
+                        <lightning-button
+                            label="Save Selected Jobs" 
+                            title="saveSelectedJobs" 
+                            variant="success" 
+                            onclick={handleJobSave}
+                            disabled={saveSelectedJobsButtonDisabled}
+                        ></lightning-button>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </template>
+</template>
