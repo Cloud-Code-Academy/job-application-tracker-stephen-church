@@ -234,7 +234,8 @@ public with sharing class TestDataFactory {
             ProfileId = standardProfile.Id,
             TimeZoneSidKey = 'America/Chicago',
             UserName = 'testuser@testuser13215654.com',
-            Federal_Tax_Status__c = taxStatus
+            Federal_Tax_Status__c = taxStatus,
+            isActive = true
         );
 
         insert testUser;

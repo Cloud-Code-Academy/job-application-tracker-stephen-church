@@ -31,4 +31,13 @@ public with sharing class JobApplicationSelector {
         ];
         return jobAppsWithOpenTasks;
     }
+
+    public static String getStaleJobApplications(Date staleDate) {
+
+        String queryString = 'SELECT Id, Application_Status__c, Follow_Up_Date__c, Owner.Email, Owner.isActive ' +
+        'FROM Job_Application__c ' +
+        'WHERE Follow_Up_Date__c <= :staleDate ' + 
+        'AND Application_Status__c NOT IN (\'Offer Declined\', \'Offer Accepted\', \'Not Interested\', \'No Offer\', \'Auto Close - Stale\')';
+        return queryString;
+    }
 }

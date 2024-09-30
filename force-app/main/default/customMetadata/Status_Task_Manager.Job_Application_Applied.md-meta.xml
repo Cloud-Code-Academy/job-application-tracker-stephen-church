@@ -36,6 +36,6 @@
     </values>
     <values>
         <field>Valid_Next_Status__c</field>
-        <value xsi:type="xsd:string">Interviewing || Not Interested</value>
+        <value xsi:type="xsd:string">Interviewing || Not Interested || Auto Close - Stale</value>
     </values>
 </CustomMetadata>
