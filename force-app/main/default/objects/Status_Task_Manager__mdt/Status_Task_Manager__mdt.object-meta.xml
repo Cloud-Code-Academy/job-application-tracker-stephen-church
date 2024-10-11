@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Represents the order of statuses in a business process and is used to determine Tasks to create at different steps as well as validating steps in the process aren&apos;t skipped. If two Statuses are different paths at the same point in the process, they should have the same value in the Order field. For example, for Job Application, Declined, Accepted and No Offer all have the same value. Task creation is optional at each status.</description>
+    <label>Status Task Manager</label>
+    <pluralLabel>Status Task Manager</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

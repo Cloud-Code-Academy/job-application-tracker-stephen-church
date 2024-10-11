@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Max_Pages__c</fullName>
+    <description>When working with the Jooble API, I have noticed something weird. If you search different keywords, you&apos;ll get a data point back that says total jobs and this number varies based on the keywords. This suggests that this is the total jobs that match your keywords. Typically, for Salesforce Developer in Austin, TX, I am seeing 6000+ jobs returned. If you request 100 jobs per page, this suggests that there should be 60 pages of results. However, whenever I call the API requesting 100 records per page and request page 13 or higher, it returns no jobs. Same thing happens when my keywords are &quot;Customer Service&quot; or &quot;Java Developer&quot; - it basically doesn&apos;t let me request Page 13 or higher. As a result, this stores the max amount of pages we will attempt to get so that the LWC can have pagination based on the total records.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Max Pages</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

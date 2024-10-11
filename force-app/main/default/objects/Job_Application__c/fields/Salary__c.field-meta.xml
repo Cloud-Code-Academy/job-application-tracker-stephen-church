@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Salary__c</fullName>
+    <description>Salaries from job postings are received as a String and can sometimes be ranges with non numeric characters (e.g. $100 - $150k). The original string received from the posting will be stored in Salary_From_Job_Board__c. Code will then take that value and convert it into a single salary that can be stored in this field.</description>
+    <inlineHelpText>The salary from the job posting. If the job posting listed a range, this will be the midpoint in the range.</inlineHelpText>
+    <label>Salary</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

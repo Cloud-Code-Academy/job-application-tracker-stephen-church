@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Valid_Next_Status__c</fullName>
+    <description>Contains a list separated by || of valid next statuses so that this can be validated in the code</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Valid Next Status</label>
+    <length>32768</length>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

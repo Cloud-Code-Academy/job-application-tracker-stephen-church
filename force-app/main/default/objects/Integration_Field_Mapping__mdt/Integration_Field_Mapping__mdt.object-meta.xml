@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>For an integration, this Custom Metadata Type creates mappings between:
+- The name of the key in the data received in the integration
+- A Salesforce Object / field it should correspond to, if applicable (not required if we don&apos;t end up mapping a data point to this field
+- A display name for this data point that can be used in the UI, such as an LWC</description>
+    <label>Integration Field Mapping</label>
+    <pluralLabel>Integration Field Mappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

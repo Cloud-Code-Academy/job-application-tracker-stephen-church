@@ -1,0 +1,38 @@
+public with sharing class SObjectSalaryConvert_DollarDDkRange implements SObjectSalaryConvert {
+
+    // REGEX pattern this class checks for after text is lowered and all whitespace is removed
+    // String with a $, 1-3 numbers and a letter with k. First \\ to escape $ and then the \ itself. 
+    // \\ to represent any digit and escape the first \. Pattern repeated between -.
+    static final String PATTERN_TO_LOOK_FOR = '\\$\\d{1,3}k-\\$\\d{1,3}k';
+
+    // Variable with the sObjects that didn't meet the pattern and a method for accessing them
+    private List<sObject> sObjectsNotMatchingPattern = new List<sObject>();
+    public List<sObject> getSObjectsNotMatchingPattern() {
+        return this.sObjectsNotMatchingPattern;
+    }
+
+    // Method to check if the pattern matches and assign the sObjects with converted values, if needed
+    public void checkSalaryPatternAndConvert(List<sObject> sObjectsToCheckForPattern, String fieldToCheckForPattern, String fieldToPopulateWithConversion) {
+        
+        if (sObjectsToCheckForPattern.isEmpty() || fieldToCheckForPattern == null || fieldToPopulateWithConversion == null) {
+            Utility.throwIllegalArgumentException('An argument passed to the method was null');
+        }
+        
+        for (SObject record : sObjectsToCheckForPattern) {
+            String fieldValueToCheck = Utility.getSObjectFieldValueLoweredNoWhiteSpace(record, fieldToCheckForPattern);
+            if (fieldValueToCheck != null && Utility.checkStringMatchesPattern(fieldValueToCheck, PATTERN_TO_LOOK_FOR)) {
+                fieldValueToCheck = SObjectSalaryConvertHelper.removeDollarSignFromSalaryString(fieldValueToCheck);
+                fieldValueToCheck = SObjectSalaryConvertHelper.removeKFromSalaryString(fieldValueToCheck);
+                List<String> salaryRangeValues = fieldValueToCheck.split('-');
+                String firstSalaryString = salaryRangeValues.get(0);
+                String secondSalaryString = salaryRangeValues.get(1);
+                firstSalaryString = SObjectSalaryConvertHelper.appendZeroesOnAbbreviatedSalaryString(firstSalaryString, 3);
+                secondSalaryString = SObjectSalaryConvertHelper.appendZeroesOnAbbreviatedSalaryString(secondSalaryString, 3);
+                Decimal midPointSalary = SObjectSalaryConvertHelper.getMidPointDecimalFromTwoNumericStrings(firstSalaryString, secondSalaryString);
+                record.put(fieldToPopulateWithConversion, midPointSalary);
+            } else {
+                this.sObjectsNotMatchingPattern.add(record);
+            }
+        }
+    }
+}

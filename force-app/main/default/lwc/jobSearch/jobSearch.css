@@ -1,0 +1,20 @@
+.box-background-sf-color{
+    background-color: #00A1E0;
+}
+
+.text-sf-color{
+    color: #00A1E0;
+}
+
+.text-white{
+    color: #FFFFFF;
+}
+
+.button-container {
+    background-color: white;
+    margin-top: 8px;
+}
+
+.error-card {
+    background-color: red;
+}
